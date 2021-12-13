@@ -7,12 +7,14 @@ public class SpawnManager : MonoBehaviour
 
     public GameObject obstacle;
     private Vector3 spawnPos = new Vector3(25, 0, 0);
-    private float randomSpawn = 1f;
+    public float startDelay = 2f;
+    public float repeatRate = 2f;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("spawnObstacle", 1, Random.Range(randomSpawn, 2*randomSpawn));
+        InvokeRepeating("spawnObstacle", startDelay, repeatRate);
     }
 
     // Update is called once per frame
