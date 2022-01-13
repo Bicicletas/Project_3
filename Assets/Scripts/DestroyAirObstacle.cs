@@ -6,6 +6,7 @@ public class DestroyAirObstacle : MonoBehaviour
 {
     public GameObject Explosion;
     public GameObject AirObstacle;
+    private float speed = 10f;
 
     // Start is called before the first frame update
     void Start()
@@ -25,7 +26,12 @@ public class DestroyAirObstacle : MonoBehaviour
         {
             Instantiate(Explosion, otherCollider.gameObject.transform.position, otherCollider.gameObject.transform.rotation);
             Destroy(otherCollider.gameObject);
-            Destroy(Explosion, 1f);
+            
+        }
+        if (Destroy(AirObstacle))
+        {
+            Explosion.transform.(Vector3.forward * speed * Time.deltaTime);
+
         }
     }
 }
