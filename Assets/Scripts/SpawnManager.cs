@@ -8,8 +8,8 @@ public class SpawnManager : MonoBehaviour
 
     public GameObject[] obstacle;
     public GameObject airObstacle;
-    private Vector3 spawnPos = new Vector3(25, 0, 0);
-    private Vector3 spawnPosAir = new Vector3(15, 10, 0);
+    private Vector3 spawnPos; 
+    private Vector3 spawnPosAir;
     public float startDelay = 2f;
     public float repeatRate = 2f;
     private PlayerControler playerContollerScript;
@@ -35,7 +35,8 @@ public class SpawnManager : MonoBehaviour
     public void spawnObstacle()
     {
         randomIndex = Random.Range(0, obstacle.Length);
-
+        float xPos = Random.Range(25, 30);
+        spawnPos = new Vector3(xPos, 0, 0);
         if (!playerContollerScript.gameOver)
         {
             Instantiate(obstacle[randomIndex], spawnPos, obstacle[randomIndex].transform.rotation);
@@ -44,10 +45,22 @@ public class SpawnManager : MonoBehaviour
 
     public void spawnObstacleAir()
     {
-
+        float xPos = Random.Range(10, 15);
+        spawnPosAir = new Vector3(xPos, 10, 0);
         if (!playerContollerScript.gameOver)
         {
             Instantiate(airObstacle, spawnPosAir, airObstacle.transform.rotation);
+        }
+    }
+    public void spawnObstacleLaunch()
+    {
+        float xPos = Random.Range(10, 15);
+        spawnPosAir = new Vector3(25, 3, 0);
+        Quaternion spawnRotation = Quaternion.Euler(0, 45, 0);
+        if (!playerContollerScript.gameOver)
+        {
+            Instantiate(airObstacle, spawnPosAir, spawnRotation);
+            
         }
     }
 
